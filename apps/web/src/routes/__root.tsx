@@ -50,7 +50,7 @@ function RootComponent() {
     <>
       <HeadContent />
       <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-        <div className="grid h-svh grid-rows-[auto_1fr]">
+        <div className="grid h-svh grid-rows-[auto_1fr] overflow-hidden">
           <Header />
           <AnimatePresence mode="wait">
             {isFetching ? (
