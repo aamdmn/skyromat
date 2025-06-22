@@ -127,7 +127,7 @@ function HomeComponent() {
                             inactive: { opacity: 0 },
                           }}
                         >
-                          <div className="h-56 w-64 rounded-3xl bg-gradient-to-br from-cyan-400 to-sky-600 opacity-90 blur-xl" />
+                          <div className="h-64 w-64 rounded-3xl bg-gradient-to-br from-cyan-400 to-sky-600 opacity-90 blur-xl" />
                         </motion.div>
                         <div className="relative flex h-full flex-col items-start justify-end rounded-[3rem] px-6 py-5">
                           <div className="absolute top-4 right-4">
