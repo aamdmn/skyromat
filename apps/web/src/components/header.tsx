@@ -22,7 +22,7 @@ export default function Header() {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 gap-2 px-2">
               <User className="h-4 w-4 text-muted-foreground" />
-              <span className="font-light text-sm">John Doe</span>
+              <span className="font-light text-sm">Marek Vican</span>
               <ChevronDown className="h-3 w-3" />
             </Button>
           </DropdownMenuTrigger>
