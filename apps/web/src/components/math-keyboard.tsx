@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 interface MathKeyboardProps {
   onInput: (value: string) => void;
@@ -62,7 +63,7 @@ export function MathKeyboard({
   return (
     <Card className="space-y-2 p-3">
       <div className="mb-1 font-medium text-muted-foreground text-xs">
-        Math Keyboard
+        Matematická klávesnica
       </div>
 
       {/* Functions Row */}
@@ -73,7 +74,7 @@ export function MathKeyboard({
             variant="outline"
             size="sm"
             onClick={() => onInput(func.value)}
-            className={`h-6 text-xs ${func.className}`}
+            className={cn('h-6 text-xs', func.className)}
           >
             {func.label}
           </Button>
@@ -88,7 +89,7 @@ export function MathKeyboard({
             variant="outline"
             size="sm"
             onClick={() => onInput(symbol.value)}
-            className={`h-6 ${symbol.className}`}
+            className={cn('h-6', symbol.className)}
           >
             {symbol.label}
           </Button>
@@ -118,7 +119,7 @@ export function MathKeyboard({
           onClick={onClear}
           className="h-6 text-xs"
         >
-          Clear
+          Vymazať
         </Button>
         <Button
           variant="outline"
@@ -126,16 +127,16 @@ export function MathKeyboard({
           onClick={onBackspace}
           className="h-6 text-xs"
         >
-          ← Back
+          ← Späť
         </Button>
         <Button onClick={onEnter} size="sm" className="h-6 text-xs">
-          Check ✓
+          Skontrolovať ✓
         </Button>
       </div>
 
       {/* Common Examples */}
       <div className="space-y-1">
-        <div className="text-muted-foreground text-xs">Quick Examples:</div>
+        <div className="text-muted-foreground text-xs">Rýchle príklady:</div>
         <div className="grid grid-cols-4 gap-1">
           {examples.map((example) => (
             <Button
@@ -143,7 +144,7 @@ export function MathKeyboard({
               variant="ghost"
               size="sm"
               onClick={() => onInput(example.value)}
-              className="h-5 justify-start font-mono text-xs hover:bg-muted"
+              className="h-5 justify-start font-mono text-xs"
             >
               {example.label}
             </Button>
