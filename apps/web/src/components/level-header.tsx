@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 interface Level {
   name: string;
   description: string;
+  themeId: string;
 }
 
 interface LevelHeaderProps {
@@ -26,7 +27,8 @@ export function LevelHeader({
         transition={{ delay: 0.1, duration: 0.3 }}
       >
         <Link
-          to="/"
+          to="/themes/$themeId"
+          params={{ themeId: level.themeId }}
           className="text-muted-foreground transition-colors hover:text-primary"
         >
           ← Späť na úrovne

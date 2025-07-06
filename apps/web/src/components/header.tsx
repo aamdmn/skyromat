@@ -10,8 +10,8 @@ import { ChevronDown, LogOut, Settings, User } from 'lucide-react';
 
 export default function Header() {
   return (
-    <header>
-      <div className="container mx-auto flex h-14 items-center justify-between px-4">
+    <header className="bg-transparent">
+      <div className="container mx-auto flex h-14 items-center justify-between bg-transparent px-4">
         {/* Logo */}
         <div className="flex items-center">
           <h1 className="font-medium text-primary text-xl">SkyroMat</h1>

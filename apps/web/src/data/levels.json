@@ -3,6 +3,7 @@
     {
       "id": "theme-1",
       "name": "Lineárne funkcie",
+      "description": "Od základov až po reálne aplikácie, ovládnite umenie priamok.",
       "levels": [
         {
           "id": "level-1",
@@ -105,6 +106,7 @@
     {
       "id": "theme-2",
       "name": "Pokročilé lineárne funkcie",
+      "description": "Preskúmajte vzťahy medzi priamkami a ich zložitejšie vlastnosti.",
       "levels": [
         {
           "id": "level-4",
@@ -175,6 +177,7 @@
     {
       "id": "theme-3",
       "name": "Kvadratické funkcie",
+      "description": "Ponorte sa do sveta parabôl a kvadratických rovníc.",
       "levels": [
         {
           "id": "level-6",
@@ -245,6 +248,7 @@
     {
       "id": "theme-4",
       "name": "Trigonometrické funkcie",
+      "description": "Objavte periodickú povahu sínusu, kosínusu a ich aplikácie.",
       "levels": [
         {
           "id": "level-8",
@@ -383,38 +387,6 @@
               "options": [],
               "correctAnswer": "1000*(0.5)^x",
               "explanation": "Exponenciálny rozpad: N(t) = N₀ · (1/2)^(t/T). Tu: y = 1000 · 0.5^x."
-            }
-          ]
-        },
-        {
-          "id": "level-12",
-          "name": "Ekonomika a finančníctvo",
-          "difficulty": 12,
-          "description": "Matematické modelovanie finančných procesov",
-          "exercises": [
-            {
-              "id": "ex-12-1",
-              "type": "economics-application",
-              "question": "Úrok 5% ročne, kapitál 1000€. Napíšte funkciu zloženého úročenia.",
-              "options": [],
-              "correctAnswer": "1000*(1.05)^x",
-              "explanation": "Zložené úročenie: K(t) = K₀(1+r)^t. Tu: y = 1000(1.05)^x."
-            },
-            {
-              "id": "ex-12-2",
-              "type": "economics-application",
-              "question": "Náklady: fixné 500€ + 50€ za kus. Napíšte funkciu celkových nákladov.",
-              "options": [],
-              "correctAnswer": "50*x + 500",
-              "explanation": "Celkové náklady = fixné + variabilné: C(x) = 500 + 50x."
-            },
-            {
-              "id": "ex-12-3",
-              "type": "economics-application",
-              "question": "Dopyt klesá lineárne: pri cene 0€ dopyt 100ks, pri 50€ dopyt 0ks. Napíšte funkciu dopytu.",
-              "options": [],
-              "correctAnswer": "100 - 2*x",
-              "explanation": "Lineárny dopyt cez body (0,100) a (50,0): sklon = -2, y-priesečník = 100. D(p) = 100 - 2p."
             }
           ]
         }

@@ -17,6 +17,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { useExerciseState } from '@/hooks/use-exercise-state';
+import { useProgress } from '@/hooks/use-progress';
 import { getLevelById } from '../lib/levels';
 
 export const Route = createFileRoute('/levels/$levelId')({
@@ -33,6 +34,7 @@ export const Route = createFileRoute('/levels/$levelId')({
 function LevelComponent() {
   const { level } = Route.useLoaderData();
   const [showCompletionDialog, setShowCompletionDialog] = useState(false);
+  const { completeLevel } = useProgress([]);
 
   const {
     currentExercise,
@@ -103,12 +105,13 @@ function LevelComponent() {
   };
 
   const handleCompleteLevel = () => {
+    completeLevel(level.id);
     setShowCompletionDialog(true);
   };
 
   const handleGoToLevels = () => {
     setShowCompletionDialog(false);
-    window.location.href = '/';
+    window.location.href = `/themes/${level.themeId}`;
   };
 
   return (
