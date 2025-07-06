@@ -47,7 +47,7 @@ export function LevelCard({
           inactive: { opacity: 0 },
         }}
       >
-        <div className="h-64 w-96 rounded-3xl bg-gradient-to-br from-cyan-400 to-sky-600 opacity-90 blur-xl" />
+        <div className="h-[80%] w-[85%] rounded-3xl bg-gradient-to-br from-cyan-400 to-sky-600 opacity-90 blur-xl" />
       </motion.div>
       <div className="relative flex h-full flex-col items-start justify-end rounded-[3rem] px-8 py-6">
         <div className="absolute top-6 right-6">
