@@ -39,7 +39,13 @@ export function LevelCard({
       transition={{ duration: 0.5, ease: 'easeInOut' }}
       whileHover={isUnlocked ? { scale: 1.01 } : {}}
     >
-      <div className="absolute inset-0 rounded-[3rem] bg-card" />
+      <motion.div
+        className="absolute inset-0 rounded-[3rem]"
+        variants={{
+          active: { backgroundColor: 'hsl(var(--card))' },
+          inactive: { backgroundColor: '#EAEAEA' },
+        }}
+      />
       <motion.div
         className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-[3rem]"
         variants={{

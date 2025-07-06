@@ -11,23 +11,7 @@ interface ThemeCardProps {
   index?: number;
 }
 
-// Function to generate unique gradient colors for each theme
-function getThemeGradient(themeId: string): string {
-  const gradients = [
-    // 'from-green-300 via-green-500 to-green-800', // Green gradient
-    'from-blue-400 to-blue-800', // Blue gradient
-  ];
-
-  // Extract theme number from ID (e.g., "theme-1" -> 1)
-  const themeNumber = Number.parseInt(themeId.split('-')[1]) || 1;
-
-  // Alternate between green and blue
-  return gradients[(themeNumber - 1) % gradients.length];
-}
-
 export function ThemeCard({ theme, className, index = 0 }: ThemeCardProps) {
-  const gradientClass = getThemeGradient(theme.id);
-
   return (
     <motion.div
       className={cn('w-full', className)}
@@ -48,7 +32,7 @@ export function ThemeCard({ theme, className, index = 0 }: ThemeCardProps) {
         >
           <div className="absolute inset-0 rounded-[3rem] bg-card" />
           <motion.div
-            className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-[3rem]"
+            className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-[3rem] bg-[#dedede]"
             whileHover={{ opacity: 0.8 }}
             initial={{ opacity: 0.6 }}
           >
