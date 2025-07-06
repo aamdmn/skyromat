@@ -52,27 +52,23 @@ export function ThemeCard({ theme, className, index = 0 }: ThemeCardProps) {
             whileHover={{ opacity: 0.8 }}
             initial={{ opacity: 0.6 }}
           >
-            <div
+            {/* <div
               className={`h-[75%] w-[85%] rounded-3xl bg-gradient-to-br ${gradientClass} opacity-90 blur-xl`}
-            />
+            /> */}
           </motion.div>
           <div className="relative flex h-full flex-col items-start justify-end rounded-[3rem] px-8 py-6">
             <div className="absolute top-6 right-6">
-              <ArrowRight className="size-8 text-white" />
+              <ArrowRight className="size-8 text-muted-foreground" />
             </div>
-            <div className="flex h-32 flex-col justify-between text-start">
-              <motion.h2
-                className="font-medium text-lg text-white md:text-xl"
-                whileHover={{ color: 'hsl(210 40% 98%)' }}
-              >
-                {theme.name}
-              </motion.h2>
-              <motion.p
-                className="mt-2 line-clamp-3 text-sm text-white/80 md:text-base"
-                whileHover={{ color: 'hsla(210, 40%, 98%, 0.9)' }}
-              >
-                {theme.description}
-              </motion.p>
+            <div className="flex flex-col justify-between text-start">
+              <div className="mb-2 flex flex-col gap-1">
+                <h2 className="font-medium text-lg text-primary md:text-xl">
+                  {theme.name}
+                </h2>
+                <p className="line-clamp-3 text-muted-foreground text-sm md:text-base">
+                  {theme.description}
+                </p>
+              </div>
               <p className="mt-1 text-muted-foreground/40 text-xs transition-colors duration-300 hover:text-muted-foreground">
                 {theme.levels.length} levels to master
               </p>
