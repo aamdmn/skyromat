@@ -14,10 +14,6 @@ export const Route = createFileRoute('/themes/$themeId')({
   component: ThemePage,
 });
 
-type CardItemType =
-  | (Level & { type: 'level' })
-  | { type: 'divider'; id: string; name: string };
-
 function ThemePage() {
   const { themeId } = Route.useParams();
   const theme = getThemeById(themeId);
@@ -26,7 +22,9 @@ function ThemePage() {
   const { isLevelCompleted, isLevelUnlocked } = useProgress(levels);
 
   const cardItems = React.useMemo(() => {
-    if (!theme) return [];
+    if (!theme) {
+      return [];
+    }
     // The type assertion is needed because Level has more properties than CardItem expects for 'level' type
     return theme.levels.map((level) => ({ ...level, type: 'level' as const }));
   }, [theme]);
@@ -46,7 +44,9 @@ function ThemePage() {
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) return;
+    if (!scrollContainer) {
+      return;
+    }
 
     const handleScroll = () => {
       const scrollTop = scrollContainer.scrollTop;
@@ -98,6 +98,7 @@ function ThemePage() {
         >
           <Link
             to="/"
+            params={{ themeId: theme.id }}
             className="flex items-center text-muted-foreground text-sm hover:text-foreground"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />

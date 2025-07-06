@@ -40,7 +40,7 @@ export function LevelCardsContainer({
         style={headerStyle}
         className="absolute inset-x-0 top-0 z-10 bg-background/80 py-4 text-center transition-all duration-200"
       >
-        <h1 className="font-bold text-3xl">{themeName}</h1>
+        <h1 className="font-medium text-2xl">{themeName}</h1>
         <p className="text-md text-muted-foreground">{themeDescription}</p>
       </div>
       <div

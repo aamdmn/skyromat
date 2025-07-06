@@ -111,7 +111,7 @@ function LevelComponent() {
 
   const handleGoToLevels = () => {
     setShowCompletionDialog(false);
-    window.location.href = '/';
+    window.location.href = `/themes/${level.themeId}`;
   };
 
   return (
