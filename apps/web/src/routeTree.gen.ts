@@ -9,13 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ThemesRouteImport } from './routes/themes'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ThemesThemeIdRouteImport } from './routes/themes.$themeId'
 import { Route as LevelsLevelIdRouteImport } from './routes/levels.$levelId'
 
+const ThemesRoute = ThemesRouteImport.update({
+  id: '/themes',
+  path: '/themes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ThemesThemeIdRoute = ThemesThemeIdRouteImport.update({
+  id: '/$themeId',
+  path: '/$themeId',
+  getParentRoute: () => ThemesRoute,
 } as any)
 const LevelsLevelIdRoute = LevelsLevelIdRouteImport.update({
   id: '/levels/$levelId',
@@ -25,38 +37,59 @@ const LevelsLevelIdRoute = LevelsLevelIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/themes': typeof ThemesRouteWithChildren
   '/levels/$levelId': typeof LevelsLevelIdRoute
+  '/themes/$themeId': typeof ThemesThemeIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/themes': typeof ThemesRouteWithChildren
   '/levels/$levelId': typeof LevelsLevelIdRoute
+  '/themes/$themeId': typeof ThemesThemeIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/themes': typeof ThemesRouteWithChildren
   '/levels/$levelId': typeof LevelsLevelIdRoute
+  '/themes/$themeId': typeof ThemesThemeIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/levels/$levelId'
+  fullPaths: '/' | '/themes' | '/levels/$levelId' | '/themes/$themeId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/levels/$levelId'
-  id: '__root__' | '/' | '/levels/$levelId'
+  to: '/' | '/themes' | '/levels/$levelId' | '/themes/$themeId'
+  id: '__root__' | '/' | '/themes' | '/levels/$levelId' | '/themes/$themeId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ThemesRoute: typeof ThemesRouteWithChildren
   LevelsLevelIdRoute: typeof LevelsLevelIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/themes': {
+      id: '/themes'
+      path: '/themes'
+      fullPath: '/themes'
+      preLoaderRoute: typeof ThemesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/themes/$themeId': {
+      id: '/themes/$themeId'
+      path: '/$themeId'
+      fullPath: '/themes/$themeId'
+      preLoaderRoute: typeof ThemesThemeIdRouteImport
+      parentRoute: typeof ThemesRoute
     }
     '/levels/$levelId': {
       id: '/levels/$levelId'
@@ -68,8 +101,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ThemesRouteChildren {
+  ThemesThemeIdRoute: typeof ThemesThemeIdRoute
+}
+
+const ThemesRouteChildren: ThemesRouteChildren = {
+  ThemesThemeIdRoute: ThemesThemeIdRoute,
+}
+
+const ThemesRouteWithChildren =
+  ThemesRoute._addFileChildren(ThemesRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ThemesRoute: ThemesRouteWithChildren,
   LevelsLevelIdRoute: LevelsLevelIdRoute,
 }
 export const routeTree = rootRouteImport

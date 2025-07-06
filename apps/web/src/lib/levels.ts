@@ -22,6 +22,7 @@ export interface Level {
 export interface Theme {
   id: string;
   name: string;
+  description: string;
   levels: Level[];
 }
 
@@ -48,6 +49,10 @@ export function getAllLevels(): Level[] {
 
 export function getLevelById(levelId: string): Level | undefined {
   return getAllLevels().find((level) => level.id === levelId);
+}
+
+export function getThemeById(themeId: string): Theme | undefined {
+  return getAllThemes().find((theme) => theme.id === themeId);
 }
 
 export function getLevelByDifficulty(difficulty: number): Level | undefined {

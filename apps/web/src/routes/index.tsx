@@ -1,72 +1,37 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { motion } from 'motion/react';
-import React from 'react';
 
-import { LevelCardsContainer } from '@/components/level-cards-container';
-import { LevelNavigationSidebar } from '@/components/level-navigation-sidebar';
-import { TooltipProvider } from '@/components/ui/tooltip';
-import { useLevelScroll } from '@/hooks/use-level-scroll';
-import { getAllLevels } from '../lib/levels';
+import { ThemeCard } from '@/components/theme-card';
+import { getAllThemes } from '../lib/levels';
 
 export const Route = createFileRoute('/')({
   component: HomeComponent,
 });
 
-type CardItemType =
-  | (ReturnType<typeof getAllLevels>[number] & { type: 'level' })
-  | { type: 'divider'; id: string; name: string };
-
 function HomeComponent() {
-  const levels = getAllLevels();
-
-  const cardItems: CardItemType[] = React.useMemo(() => {
-    const items: CardItemType[] = [];
-    let lastThemeId = '';
-    for (const level of levels) {
-      if (level.themeId !== lastThemeId) {
-        items.push({
-          type: 'divider',
-          id: `divider-${level.themeId}`,
-          name: level.themeName,
-        });
-        lastThemeId = level.themeId;
-      }
-      items.push({ ...level, type: 'level' });
-    }
-    return items;
-  }, [levels]);
-
-  const levelItems = React.useMemo(
-    () => cardItems.filter((item) => item.type === 'level'),
-    [cardItems]
-  );
-
-  const { activeIndex, scrollContainerRef, scrollToCard, setCardRef } =
-    useLevelScroll(cardItems);
+  const themes = getAllThemes();
 
   return (
-    <TooltipProvider>
-      <motion.div
-        className="flex h-screen w-full bg-background pl-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <LevelNavigationSidebar
-          levelItems={levelItems}
-          activeIndex={activeIndex}
-          onLevelClick={scrollToCard}
-          cardItems={cardItems}
-        />
-
-        <LevelCardsContainer
-          cardItems={cardItems}
-          activeIndex={activeIndex}
-          onScrollRef={scrollContainerRef}
-          onCardRef={setCardRef}
-        />
-      </motion.div>
-    </TooltipProvider>
+    <motion.div
+      className="flex h-screen w-full flex-col bg-background"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="py-8 text-center">
+        <h1 className="font-bold text-4xl">Vitajte v Skyro-Matika!</h1>
+        <p className="text-lg text-muted-foreground">
+          Preskúmajte svety matematiky a vylepšite svoje zručnosti.
+        </p>
+      </div>
+      <div className="flex-grow overflow-y-auto px-4 pb-8">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {themes.map((theme) => (
+            <ThemeCard key={theme.id} theme={theme} />
+          ))}
+        </div>
+      </div>
+    </motion.div>
   );
 }

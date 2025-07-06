@@ -1,3 +1,4 @@
+import { CheckCircle, Lock } from 'lucide-react';
 import { motion } from 'motion/react';
 
 import { cn } from '@/lib/utils';
@@ -13,6 +14,8 @@ interface LevelNavigationSidebarProps {
   activeIndex: number;
   onLevelClick: (index: number) => void;
   cardItems: Array<{ id: string; type: 'level' | 'divider' }>;
+  isLevelCompleted: (levelId: string) => boolean;
+  isLevelUnlocked: (levelId: string) => boolean;
 }
 
 export function LevelNavigationSidebar({
@@ -20,6 +23,8 @@ export function LevelNavigationSidebar({
   activeIndex,
   onLevelClick,
   cardItems,
+  isLevelCompleted,
+  isLevelUnlocked,
 }: LevelNavigationSidebarProps) {
   return (
     <div className="relative w-72 bg-gradient-to-r from-background to-background/50">
@@ -31,29 +36,50 @@ export function LevelNavigationSidebar({
           {levelItems.map((item, levelIndex) => {
             const actualIndex = cardItems.findIndex((ci) => ci.id === item.id);
             const isActive = cardItems[activeIndex]?.id === item.id;
+            const isCompleted = isLevelCompleted(item.id);
+            const isUnlocked = isLevelUnlocked(item.id);
 
             return (
               <motion.button
                 key={item.id}
                 type="button"
-                onClick={() => onLevelClick(actualIndex)}
-                className="relative flex w-full items-center gap-4 rounded-lg px-4 py-3 text-left transition-all hover:bg-muted/30"
-                whileHover={{ x: 8, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                onClick={() => isUnlocked && onLevelClick(actualIndex)}
+                className={cn(
+                  'relative flex w-full items-center gap-4 rounded-lg px-4 py-3 text-left transition-all',
+                  {
+                    'hover:bg-muted/30': isUnlocked,
+                    'cursor-not-allowed': !isUnlocked,
+                  }
+                )}
+                whileHover={isUnlocked ? { x: 8, scale: 1.02 } : {}}
+                whileTap={isUnlocked ? { scale: 0.98 } : {}}
                 aria-label={`Go to ${item.name}`}
+                disabled={!isUnlocked}
               >
                 {/* Dot on the line */}
-                <div className="relative flex h-8 w-8 items-center justify-center">
+                <div className="relative flex h-8 w-8 shrink-0 items-center justify-center">
                   <motion.div
                     className={cn(
                       'h-3 w-3 rounded-full border-2 transition-all duration-300',
-                      isActive
-                        ? 'border-primary bg-primary shadow-lg shadow-primary/40'
-                        : 'border-muted-foreground/40 bg-background hover:border-muted-foreground/70'
+                      {
+                        'border-primary bg-primary shadow-lg shadow-primary/40':
+                          isActive && isUnlocked,
+                        'border-green-500 bg-green-500': isCompleted,
+                        'border-muted-foreground/20 bg-background':
+                          !isActive && !isCompleted,
+                        'hover:border-muted-foreground/70':
+                          isUnlocked && !isCompleted && !isActive,
+                      }
                     )}
                     animate={isActive ? { scale: 1.3 } : { scale: 1 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                   />
+                  {isCompleted && (
+                    <CheckCircle className="absolute h-4 w-4 text-white" />
+                  )}
+                  {!isUnlocked && (
+                    <Lock className="absolute h-4 w-4 text-muted-foreground/50" />
+                  )}
                   {isActive && (
                     <motion.div
                       className="absolute inset-0 rounded-full bg-primary/20 blur-sm"
@@ -69,9 +95,13 @@ export function LevelNavigationSidebar({
                   <motion.span
                     className={cn(
                       'block truncate font-medium text-sm transition-colors',
-                      isActive
-                        ? 'text-primary'
-                        : 'text-muted-foreground hover:text-foreground'
+                      {
+                        'text-primary': isActive && isUnlocked,
+                        'text-green-500': isCompleted,
+                        'text-muted-foreground': !isActive && !isCompleted,
+                        'hover:text-foreground': isUnlocked && !isActive,
+                        'text-muted-foreground/50': !isUnlocked,
+                      }
                     )}
                     animate={isActive ? { opacity: 1 } : { opacity: 0.8 }}
                     transition={{ duration: 0.2 }}
