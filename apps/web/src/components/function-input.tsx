@@ -24,6 +24,7 @@ interface FunctionInputProps {
   onReset: () => void;
   onNextExercise: () => void;
   onCompleteLevel: () => void;
+  onEnterPress: () => void;
   isLastExercise: boolean;
 }
 
@@ -36,6 +37,7 @@ export function FunctionInput({
   onReset,
   onNextExercise,
   onCompleteLevel,
+  onEnterPress,
   isLastExercise,
 }: FunctionInputProps) {
   const [isValid, setIsValid] = useState(true);
@@ -62,7 +64,7 @@ export function FunctionInput({
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && isValid && studentFunction.trim()) {
-      onCheckAnswer();
+      onEnterPress();
     }
   };
 
@@ -98,7 +100,8 @@ export function FunctionInput({
             <Input
               id="function-input"
               type="text"
-              placeholder="2*x + 3"
+              autoFocus
+              placeholder="x + 3"
               value={studentFunction}
               onChange={(e) => setStudentFunction(e.target.value)}
               className={`h-10 font-mono text-base ${

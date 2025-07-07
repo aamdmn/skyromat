@@ -129,7 +129,17 @@ export function MathKeyboard({
         >
           ← Späť
         </Button>
-        <Button onClick={onEnter} size="sm" className="h-6 text-xs">
+        <Button
+          onClick={(_e) => {
+            try {
+              onEnter();
+            } catch (error) {
+              console.error('Error calling onEnter:', error);
+            }
+          }}
+          size="sm"
+          className="h-6 text-xs"
+        >
           Skontrolovať ✓
         </Button>
       </div>
