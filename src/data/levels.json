@@ -1,0 +1,396 @@
+{
+  "themes": [
+    {
+      "id": "theme-1",
+      "name": "Lineárne funkcie",
+      "description": "Od základov až po reálne aplikácie, ovládnite umenie priamok.",
+      "levels": [
+        {
+          "id": "level-1",
+          "name": "Základné lineárne funkcie",
+          "difficulty": 1,
+          "description": "Naučte sa písať a grafovať základné lineárne funkcie",
+          "exercises": [
+            {
+              "id": "ex-1-1",
+              "type": "linear-function",
+              "question": "Napíšte funkciu pre priamku so sklonom 2 a y-priesečníkom 3.",
+              "options": [],
+              "correctAnswer": "2*x + 3",
+              "explanation": "Lineárna funkcia v tvare sklon-priesečník je y = mx + b, kde m je sklon a b je y-priesečník. Tu je m = 2 a b = 3, takže y = 2*x + 3."
+            },
+            {
+              "id": "ex-1-2",
+              "type": "linear-function",
+              "question": "Napíšte funkciu pre priamku so sklonom -1 a y-priesečníkom 5.",
+              "options": [],
+              "correctAnswer": "-x + 5",
+              "explanation": "Pre sklon -1 a y-priesečník 5 je funkcia y = -1*x + 5, čo sa zjednoduší na y = -x + 5."
+            },
+            {
+              "id": "ex-1-3",
+              "type": "linear-function",
+              "question": "Napíšte funkciu pre horizontálnu priamku na úrovni y = 4.",
+              "options": [],
+              "correctAnswer": "4",
+              "explanation": "Horizontálna priamka má sklon 0, takže funkcia je y = 0*x + 4, čo sa zjednoduší na y = 4."
+            }
+          ]
+        },
+        {
+          "id": "level-2",
+          "name": "Sklon a priesečník",
+          "difficulty": 2,
+          "description": "Pochopenie sklonu a y-priesečníka v lineárnych funkciách",
+          "exercises": [
+            {
+              "id": "ex-2-1",
+              "type": "linear-function",
+              "question": "Napíšte funkciu pre priamku, ktorá prechádza bodom (0, 2) a má sklon 3.",
+              "options": [],
+              "correctAnswer": "3*x + 2",
+              "explanation": "Keďže priamka prechádza bodom (0, 2), y-priesečník je 2. So sklonom 3 je funkcia y = 3*x + 2."
+            },
+            {
+              "id": "ex-2-2",
+              "type": "linear-function",
+              "question": "Napíšte funkciu pre priamku so sklonom 0.5 a y-priesečníkom -1.",
+              "options": [],
+              "correctAnswer": "0.5*x - 1",
+              "explanation": "Pre sklon 0.5 a y-priesečník -1 je funkcia y = 0.5*x + (-1), čo je y = 0.5*x - 1."
+            },
+            {
+              "id": "ex-2-3",
+              "type": "linear-function",
+              "question": "Napíšte funkciu pre priamku so sklonom 0 a y-priesečníkom 6.",
+              "options": [],
+              "correctAnswer": "6",
+              "explanation": "Priamka so sklonom 0 je horizontálna. Funkcia je y = 0*x + 6, čo sa zjednoduší na y = 6."
+            }
+          ]
+        },
+        {
+          "id": "level-3",
+          "name": "Bod-sklon forma",
+          "difficulty": 3,
+          "description": "Konverzia medzi rôznymi formami lineárnych rovníc",
+          "exercises": [
+            {
+              "id": "ex-3-1",
+              "type": "linear-function",
+              "question": "Napíšte funkciu pre priamku, ktorá prechádza bodmi (1, 4) a (3, 8).",
+              "options": [],
+              "correctAnswer": "2*x + 2",
+              "explanation": "Najprv nájdite sklon: m = (8-4)/(3-1) = 4/2 = 2. Potom použite bod-sklon formu: y - 4 = 2(x - 1), čo sa zjednoduší na y = 2*x + 2."
+            },
+            {
+              "id": "ex-3-2",
+              "type": "linear-function",
+              "question": "Napíšte funkciu pre priamku so sklonom -2, ktorá prechádza bodom (0, 1).",
+              "options": [],
+              "correctAnswer": "-2*x + 1",
+              "explanation": "Keďže priamka prechádza bodom (0, 1), y-priesečník je 1. So sklonom -2 je funkcia y = -2*x + 1."
+            },
+            {
+              "id": "ex-3-3",
+              "type": "linear-function",
+              "question": "Napíšte funkciu pre priamku, ktorá prechádza bodmi (-1, 3) a (2, 0).",
+              "options": [],
+              "correctAnswer": "-x + 2",
+              "explanation": "Najprv nájdite sklon: m = (0-3)/(2-(-1)) = -3/3 = -1. Potom použite bod-sklon formu: y - 3 = -1(x - (-1)), čo sa zjednoduší na y = -x + 2."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "theme-2",
+      "name": "Pokročilé lineárne funkcie",
+      "description": "Preskúmajte vzťahy medzi priamkami a ich zložitejšie vlastnosti.",
+      "levels": [
+        {
+          "id": "level-4",
+          "name": "Rovnobežné a kolmé priamky",
+          "difficulty": 4,
+          "description": "Pochopenie vzťahov medzi priamkami",
+          "exercises": [
+            {
+              "id": "ex-4-1",
+              "type": "linear-function",
+              "question": "Napíšte funkciu pre priamku rovnobežnú s y = 2*x + 1, ktorá prechádza bodom (0, 3).",
+              "options": [],
+              "correctAnswer": "2*x + 3",
+              "explanation": "Rovnobežné priamky majú rovnaký sklon. Keďže pôvodná priamka má sklon 2, nová priamka má tiež sklon 2. S y-priesečníkom 3 je funkcia y = 2*x + 3."
+            },
+            {
+              "id": "ex-4-2",
+              "type": "linear-function",
+              "question": "Napíšte funkciu pre priamku kolmú na y = 3*x + 2, ktorá prechádza bodom (0, 1).",
+              "options": [],
+              "correctAnswer": "-0.333*x + 1",
+              "explanation": "Kolmé priamky majú sklony, ktoré sú záporné recipročné hodnoty. Pôvodný sklon je 3, takže nový sklon je -1/3 ≈ -0.333. S y-priesečníkom 1 je funkcia y = -0.333*x + 1."
+            },
+            {
+              "id": "ex-4-3",
+              "type": "linear-function",
+              "question": "Napíšte funkciu pre priamku rovnobežnú s y = -x + 4, ktorá prechádza bodom (1, 2).",
+              "options": [],
+              "correctAnswer": "-x + 3",
+              "explanation": "Rovnobežné priamky majú rovnaký sklon. Keďže pôvodná priamka má sklon -1, nová priamka má tiež sklon -1. Použitím bod-sklon formy: y - 2 = -1(x - 1), čo sa zjednoduší na y = -x + 3."
+            }
+          ]
+        },
+        {
+          "id": "level-5",
+          "name": "Reálne aplikácie",
+          "difficulty": 5,
+          "description": "Aplikovanie lineárnych funkcií na reálne scenáre",
+          "exercises": [
+            {
+              "id": "ex-5-1",
+              "type": "linear-function",
+              "question": "Taxi si účtuje 2€ základnú taxu plus 1,50€ za kilometer. Napíšte funkciu pre celkovú cenu v závislosti od počtu kilometrov.",
+              "options": [],
+              "correctAnswer": "1.5*x + 2",
+              "explanation": "Funkcia ceny je lineárna: základná taxa + (sadzba za km × km). Takže y = 2 + 1.5*x, čo je y = 1.5*x + 2."
+            },
+            {
+              "id": "ex-5-2",
+              "type": "linear-function",
+              "question": "Auto cestuje rýchlosťou 60 km/h. Napíšte funkciu pre prejdenú vzdialenosť v závislosti od času v hodinách.",
+              "options": [],
+              "correctAnswer": "60*x",
+              "explanation": "Vzdialenosť = rýchlosť × čas. Keďže auto cestuje rýchlosťou 60 km/h, funkcia vzdialenosti je y = 60*x."
+            },
+            {
+              "id": "ex-5-3",
+              "type": "linear-function",
+              "question": "Telefónny plán stojí 30€ mesačne plus 0,10€ za minútu. Napíšte funkciu pre celkovú cenu v závislosti od počtu minút.",
+              "options": [],
+              "correctAnswer": "0.1*x + 30",
+              "explanation": "Funkcia ceny je: základná cena + (sadzba za minútu × minúty). Takže y = 30 + 0.1*x, čo je y = 0.1*x + 30."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "theme-3",
+      "name": "Kvadratické funkcie",
+      "description": "Ponorte sa do sveta parabôl a kvadratických rovníc.",
+      "levels": [
+        {
+          "id": "level-6",
+          "name": "Základné paraboly",
+          "difficulty": 6,
+          "description": "Objavte svet kvadratických funkcií a parabôl",
+          "exercises": [
+            {
+              "id": "ex-6-1",
+              "type": "quadratic-function",
+              "question": "Napíšte základnú parabolickú funkciu s vrcholom v počiatku.",
+              "options": [],
+              "correctAnswer": "x^2",
+              "explanation": "Základná parabola má tvar y = x². Vrchol je v bode (0,0) a otvára sa nahor."
+            },
+            {
+              "id": "ex-6-2",
+              "type": "quadratic-function",
+              "question": "Napíšte funkciu pre parabolu otvorenú nadol s vrcholom v počiatku.",
+              "options": [],
+              "correctAnswer": "-x^2",
+              "explanation": "Záporné znamienko pred x² spôsobí, že sa parabola otvorí nadol: y = -x²."
+            },
+            {
+              "id": "ex-6-3",
+              "type": "quadratic-function",
+              "question": "Napíšte funkciu pre parabolu posunutú nahor o 3 jednotky.",
+              "options": [],
+              "correctAnswer": "x^2 + 3",
+              "explanation": "Posunutie nahor sa dosiahne pridaním konštanty: y = x² + 3."
+            }
+          ]
+        },
+        {
+          "id": "level-7",
+          "name": "Transformácie parabôl",
+          "difficulty": 7,
+          "description": "Naučte sa meniť tvar a polohu parabôl",
+          "exercises": [
+            {
+              "id": "ex-7-1",
+              "type": "quadratic-function",
+              "question": "Napíšte funkciu pre parabolu posunutú vpravo o 2 jednotky.",
+              "options": [],
+              "correctAnswer": "(x-2)^2",
+              "explanation": "Horizontálne posunutie vpravo sa dosiahne odčítaním od x: y = (x-2)²."
+            },
+            {
+              "id": "ex-7-2",
+              "type": "quadratic-function",
+              "question": "Napíšte funkciu pre parabolu s vrcholom v bode (1, -2).",
+              "options": [],
+              "correctAnswer": "(x-1)^2 - 2",
+              "explanation": "Vrcholová forma: y = (x-h)² + k, kde (h,k) je vrchol. Tu: y = (x-1)² - 2."
+            },
+            {
+              "id": "ex-7-3",
+              "type": "quadratic-function",
+              "question": "Napíšte funkciu pre parabolu dvakrát užšiu ako základná parabola.",
+              "options": [],
+              "correctAnswer": "2*x^2",
+              "explanation": "Koeficient väčší ako 1 pred x² robí parabolu užšou: y = 2x²."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "theme-4",
+      "name": "Trigonometrické funkcie",
+      "description": "Objavte periodickú povahu sínusu, kosínusu a ich aplikácie.",
+      "levels": [
+        {
+          "id": "level-8",
+          "name": "Sínus a kosínus",
+          "difficulty": 8,
+          "description": "Základy periodických funkcií",
+          "exercises": [
+            {
+              "id": "ex-8-1",
+              "type": "trigonometric-function",
+              "question": "Napíšte základnú sínovú funkciu.",
+              "options": [],
+              "correctAnswer": "sin(x)",
+              "explanation": "Základná sínová funkcia je y = sin(x) s periódou 2π a amplitúdou 1."
+            },
+            {
+              "id": "ex-8-2",
+              "type": "trigonometric-function",
+              "question": "Napíšte kosínovú funkciu s amplitúdou 2.",
+              "options": [],
+              "correctAnswer": "2*cos(x)",
+              "explanation": "Amplitúda sa mení koeficientom pred funkciou: y = 2cos(x)."
+            },
+            {
+              "id": "ex-8-3",
+              "type": "trigonometric-function",
+              "question": "Napíšte sínovú funkciu posunutú nahor o 1 jednotku.",
+              "options": [],
+              "correctAnswer": "sin(x) + 1",
+              "explanation": "Vertikálne posunutie sa dosiahne pridaním konštanty: y = sin(x) + 1."
+            }
+          ]
+        },
+        {
+          "id": "level-9",
+          "name": "Transformácie trigonometrických funkcií",
+          "difficulty": 9,
+          "description": "Pokročilé úpravy periodických funkcií",
+          "exercises": [
+            {
+              "id": "ex-9-1",
+              "type": "trigonometric-function",
+              "question": "Napíšte sínovú funkciu s dvojnásobnou frekvenciou.",
+              "options": [],
+              "correctAnswer": "sin(2*x)",
+              "explanation": "Koeficient pri x mení frekvenciu: y = sin(2x) má dvojnásobnú frekvenciu."
+            },
+            {
+              "id": "ex-9-2",
+              "type": "trigonometric-function",
+              "question": "Napíšte kosínovú funkciu posunutú vľavo o π/2.",
+              "options": [],
+              "correctAnswer": "cos(x + 1.57)",
+              "explanation": "Horizontálne posunutie vľavo: y = cos(x + π/2) ≈ cos(x + 1.57)."
+            },
+            {
+              "id": "ex-9-3",
+              "type": "trigonometric-function",
+              "question": "Napíšte invertovanú sínovú funkciu (otočenú cez x-ovú os).",
+              "options": [],
+              "correctAnswer": "-sin(x)",
+              "explanation": "Záporné znamienko invertuje funkciu cez x-ovú os: y = -sin(x)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "theme-5",
+      "name": "Exponenciálne funkcie",
+      "levels": [
+        {
+          "id": "level-10",
+          "name": "Rast a úbytok",
+          "difficulty": 10,
+          "description": "Exponenciálny rast a exponenciálny rozpad",
+          "exercises": [
+            {
+              "id": "ex-10-1",
+              "type": "exponential-function",
+              "question": "Napíšte základnú exponenciálnu funkciu so základom 2.",
+              "options": [],
+              "correctAnswer": "2^x",
+              "explanation": "Exponenciálna funkcia má tvar y = a^x. Tu: y = 2^x rastie exponenciálne."
+            },
+            {
+              "id": "ex-10-2",
+              "type": "exponential-function",
+              "question": "Napíšte funkciu exponenciálneho rozpadu s polovičným časom.",
+              "options": [],
+              "correctAnswer": "(0.5)^x",
+              "explanation": "Exponenciálny rozpad: y = (1/2)^x = 0.5^x. Hodnota sa každú jednotku času zníži na polovicu."
+            },
+            {
+              "id": "ex-10-3",
+              "type": "exponential-function",
+              "question": "Napíšte prirodzenú exponenciálnu funkciu (Eulerovo číslo).",
+              "options": [],
+              "correctAnswer": "2.718^x",
+              "explanation": "Prirodzená exponenciálna funkcia používa Eulerovo číslo e ≈ 2.718: y = e^x."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "theme-6",
+      "name": "Reálne aplikácie v praxi",
+      "levels": [
+        {
+          "id": "level-11",
+          "name": "Fyzika a pohyb",
+          "difficulty": 11,
+          "description": "Matematické modelovanie fyzikálnych javov",
+          "exercises": [
+            {
+              "id": "ex-11-1",
+              "type": "physics-application",
+              "question": "Padajúci objekt: s = 5*t². Napíšte funkciu pre rýchlosť (derivácia dráhy).",
+              "options": [],
+              "correctAnswer": "10*x",
+              "explanation": "Rýchlosť je derivácia dráhy. d/dt(5t²) = 10t, takže v = 10t."
+            },
+            {
+              "id": "ex-11-2",
+              "type": "physics-application",
+              "question": "Harmonický oscilátor: amplitúda 3, frekvencia π. Napíšte polohovú funkciu.",
+              "options": [],
+              "correctAnswer": "3*cos(3.14*x)",
+              "explanation": "Harmonický pohyb: y = A·cos(ωt). Tu: y = 3cos(πt) ≈ 3cos(3.14x)."
+            },
+            {
+              "id": "ex-11-3",
+              "type": "physics-application",
+              "question": "Rádioaktívny rozpad: začiatočná aktivita 1000, polčas rozpadu 1 rok. Napíšte funkciu.",
+              "options": [],
+              "correctAnswer": "1000*(0.5)^x",
+              "explanation": "Exponenciálny rozpad: N(t) = N₀ · (1/2)^(t/T). Tu: y = 1000 · 0.5^x."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
