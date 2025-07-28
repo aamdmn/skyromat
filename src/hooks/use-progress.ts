@@ -58,8 +58,12 @@ export function useProgress(levels: Level[]) {
   const isLevelUnlocked = useCallback(
     (levelId: string) => {
       const levelIndex = levels.findIndex((l) => l.id === levelId);
-      if (levelIndex === -1) return false;
-      if (levelIndex === 0) return true;
+      if (levelIndex === -1) {
+        return false;
+      }
+      if (levelIndex === 0) {
+        return true;
+      }
 
       const previousLevel = levels[levelIndex - 1];
       return isLevelCompleted(previousLevel.id);

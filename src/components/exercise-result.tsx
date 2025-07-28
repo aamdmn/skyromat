@@ -10,7 +10,9 @@ export function ExerciseResult({
   isCorrect,
   explanation,
 }: ExerciseResultProps) {
-  if (isCorrect === null) return null;
+  if (isCorrect === null) {
+    return null;
+  }
 
   if (isCorrect) {
     return (
