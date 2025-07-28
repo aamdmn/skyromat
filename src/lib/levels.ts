@@ -1,4 +1,4 @@
-import levelsData from '../data/levels.json';
+import levelsData from '../data/levels.json' with { type: 'json' };
 
 export interface Exercise {
   id: string;
@@ -73,7 +73,7 @@ export function getNextLevel(currentLevelId: string): Level | undefined {
     (level) => level.id === currentLevelId
   );
   if (currentIndex === -1 || currentIndex === allLevels.length - 1) {
-    return undefined;
+    return;
   }
   return allLevels[currentIndex + 1];
 }
@@ -84,7 +84,7 @@ export function getPreviousLevel(currentLevelId: string): Level | undefined {
     (level) => level.id === currentLevelId
   );
   if (currentIndex <= 0) {
-    return undefined;
+    return;
   }
   return allLevels[currentIndex - 1];
 }

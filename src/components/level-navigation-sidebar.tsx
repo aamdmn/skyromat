@@ -41,9 +41,7 @@ export function LevelNavigationSidebar({
 
             return (
               <motion.button
-                key={item.id}
-                type="button"
-                onClick={() => isUnlocked && onLevelClick(actualIndex)}
+                aria-label={`Go to ${item.name}`}
                 className={cn(
                   'relative flex w-full items-center gap-4 rounded-lg px-4 py-3 text-left transition-all',
                   {
@@ -51,27 +49,30 @@ export function LevelNavigationSidebar({
                     'cursor-not-allowed': !isUnlocked,
                   }
                 )}
+                disabled={!isUnlocked}
+                key={item.id}
+                onClick={() => isUnlocked && onLevelClick(actualIndex)}
+                type="button"
                 whileHover={isUnlocked ? { x: 8, scale: 1.02 } : {}}
                 whileTap={isUnlocked ? { scale: 0.98 } : {}}
-                aria-label={`Go to ${item.name}`}
-                disabled={!isUnlocked}
               >
                 {/* Dot on the line */}
                 <div className="relative flex h-8 w-8 shrink-0 items-center justify-center">
                   <motion.div
+                    animate={isActive ? { scale: 1.3 } : { scale: 1 }}
                     className={cn(
                       'h-3 w-3 rounded-full border-2 transition-all duration-300',
                       {
                         'border-primary bg-primary shadow-lg shadow-primary/40':
                           isActive && isUnlocked,
                         'border-green-500 bg-green-500': isCompleted,
-                        'border-muted-foreground/20 bg-background':
-                          !isActive && !isCompleted,
+                        'border-muted-foreground/20 bg-background': !(
+                          isActive || isCompleted
+                        ),
                         'hover:border-muted-foreground/70':
                           isUnlocked && !isCompleted && !isActive,
                       }
                     )}
-                    animate={isActive ? { scale: 1.3 } : { scale: 1 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                   />
                   {isCompleted && (
@@ -82,9 +83,9 @@ export function LevelNavigationSidebar({
                   )}
                   {isActive && (
                     <motion.div
+                      animate={{ scale: 2, opacity: 1 }}
                       className="absolute inset-0 rounded-full bg-primary/20 blur-sm"
                       initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 2, opacity: 1 }}
                       transition={{ duration: 0.3 }}
                     />
                   )}
@@ -93,17 +94,17 @@ export function LevelNavigationSidebar({
                 {/* Level name */}
                 <div className="min-w-0 flex-1">
                   <motion.span
+                    animate={isActive ? { opacity: 1 } : { opacity: 0.8 }}
                     className={cn(
                       'block truncate font-medium text-sm transition-colors',
                       {
                         'text-primary': isActive && isUnlocked,
                         'text-green-500': isCompleted,
-                        'text-muted-foreground': !isActive && !isCompleted,
+                        'text-muted-foreground': !(isActive || isCompleted),
                         'hover:text-foreground': isUnlocked && !isActive,
                         'text-muted-foreground/50': !isUnlocked,
                       }
                     )}
-                    animate={isActive ? { opacity: 1 } : { opacity: 0.8 }}
                     transition={{ duration: 0.2 }}
                   >
                     {item.name}
@@ -121,9 +122,9 @@ export function LevelNavigationSidebar({
                 {/* Active indicator */}
                 {isActive && (
                   <motion.div
+                    animate={{ scaleY: 1, opacity: 1 }}
                     className="h-8 w-1 rounded-full bg-gradient-to-b from-primary/50 to-primary"
                     initial={{ scaleY: 0, opacity: 0 }}
-                    animate={{ scaleY: 1, opacity: 1 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                   />
                 )}

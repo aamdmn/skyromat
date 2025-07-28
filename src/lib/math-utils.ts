@@ -78,7 +78,7 @@ export function compareFunctions(
   studentFunc: string,
   tolerance = 0.0001
 ): boolean {
-  if (!targetFunc || !studentFunc) {
+  if (!(targetFunc && studentFunc)) {
     return false;
   }
 

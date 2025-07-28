@@ -1,5 +1,5 @@
-import type { Level } from '@/lib/levels';
 import { useCallback, useEffect, useState } from 'react';
+import type { Level } from '@/lib/levels';
 
 const PROGRESS_STORAGE_KEY = 'skyro-matika-progress';
 

@@ -1,3 +1,4 @@
+import { ChevronDown, LogOut, Settings, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -6,7 +7,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { ChevronDown, LogOut, Settings, User } from 'lucide-react';
 
 export default function Header() {
   return (
@@ -20,7 +20,7 @@ export default function Header() {
         {/* User Menu */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 gap-2 px-2">
+            <Button className="h-8 gap-2 px-2" variant="ghost">
               <User className="h-4 w-4 text-muted-foreground" />
               <span className="font-light text-sm">Marek Vican</span>
               <ChevronDown className="h-3 w-3" />

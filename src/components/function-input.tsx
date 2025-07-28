@@ -74,9 +74,9 @@ export function FunctionInput({
 
   return (
     <motion.div
+      animate={{ opacity: 1 }}
       className="lg:col-span-3"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
       transition={{ delay: 0.4, duration: 0.3 }}
     >
       <Card className="h-full p-4">
@@ -92,32 +92,32 @@ export function FunctionInput({
         <div className="space-y-3">
           <div>
             <label
-              htmlFor="function-input"
               className="mb-1 block font-medium text-sm"
+              htmlFor="function-input"
             >
               f: y =
             </label>
             <Input
-              id="function-input"
-              type="text"
               autoFocus
-              placeholder="x + 3"
-              value={studentFunction}
-              onChange={(e) => setStudentFunction(e.target.value)}
               className={`h-10 font-mono text-base ${
                 !isValid && studentFunction.trim()
                   ? 'border-red-500 focus:border-red-500'
                   : ''
               }`}
+              id="function-input"
+              onChange={(e) => setStudentFunction(e.target.value)}
               onKeyDown={handleKeyDown}
+              placeholder="x + 3"
+              type="text"
+              value={studentFunction}
             />
 
             {/* Validation feedback */}
             {!isValid && studentFunction.trim() && (
               <motion.div
-                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="mt-2"
+                initial={{ opacity: 0, y: -10 }}
               >
                 <p className="text-red-600 text-xs">
                   Neplatný matematický výraz
@@ -132,10 +132,10 @@ export function FunctionInput({
                     <div className="flex flex-wrap gap-1">
                       {suggestions.slice(0, 3).map((suggestion, index) => (
                         <button
-                          key={index}
-                          type="button"
-                          onClick={() => applySuggestion(suggestion)}
                           className="rounded bg-blue-100 px-2 py-1 font-mono text-blue-800 text-xs transition-colors hover:bg-blue-200"
+                          key={index}
+                          onClick={() => applySuggestion(suggestion)}
+                          type="button"
                         >
                           {suggestion}
                         </button>
@@ -149,18 +149,18 @@ export function FunctionInput({
 
           <div className="flex gap-1">
             <Button
-              onClick={onCheckAnswer}
-              disabled={!studentFunction.trim() || !isValid}
-              size="sm"
               className="h-7 text-xs"
+              disabled={!(studentFunction.trim() && isValid)}
+              onClick={onCheckAnswer}
+              size="sm"
             >
               Skontrolovať
             </Button>
             <Button
-              variant="outline"
+              className="h-7 text-xs"
               onClick={onReset}
               size="sm"
-              className="h-7 text-xs"
+              variant="outline"
             >
               <RotateCcw className="mr-1 h-3 w-3" />
               Reset
@@ -168,15 +168,15 @@ export function FunctionInput({
           </div>
 
           <ExerciseResult
-            isCorrect={isCorrect}
             explanation={exercise.explanation}
+            isCorrect={isCorrect}
           />
 
           <ExerciseNavigation
             isCorrect={isCorrect}
             isLastExercise={isLastExercise}
-            onNextExercise={onNextExercise}
             onCompleteLevel={onCompleteLevel}
+            onNextExercise={onNextExercise}
           />
         </div>
       </Card>

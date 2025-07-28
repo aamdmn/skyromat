@@ -70,11 +70,11 @@ export function MathKeyboard({
       <div className="grid grid-cols-7 gap-1">
         {functions.map((func) => (
           <Button
-            key={func.label}
-            variant="outline"
-            size="sm"
-            onClick={() => onInput(func.value)}
             className={cn('h-6 text-xs', func.className)}
+            key={func.label}
+            onClick={() => onInput(func.value)}
+            size="sm"
+            variant="outline"
           >
             {func.label}
           </Button>
@@ -85,11 +85,11 @@ export function MathKeyboard({
       <div className="grid grid-cols-5 gap-1">
         {symbols.map((symbol) => (
           <Button
-            key={symbol.label}
-            variant="outline"
-            size="sm"
-            onClick={() => onInput(symbol.value)}
             className={cn('h-6', symbol.className)}
+            key={symbol.label}
+            onClick={() => onInput(symbol.value)}
+            size="sm"
+            variant="outline"
           >
             {symbol.label}
           </Button>
@@ -100,11 +100,11 @@ export function MathKeyboard({
       <div className="grid grid-cols-3 gap-1">
         {numbers.map((num) => (
           <Button
-            key={num.label}
-            variant="outline"
-            size="sm"
-            onClick={() => onInput(num.value)}
             className="h-6 font-mono text-xs"
+            key={num.label}
+            onClick={() => onInput(num.value)}
+            size="sm"
+            variant="outline"
           >
             {num.label}
           </Button>
@@ -114,22 +114,23 @@ export function MathKeyboard({
       {/* Control Buttons */}
       <div className="grid grid-cols-3 gap-1">
         <Button
-          variant="outline"
-          size="sm"
-          onClick={onClear}
           className="h-6 text-xs"
+          onClick={onClear}
+          size="sm"
+          variant="outline"
         >
           Vymazať
         </Button>
         <Button
-          variant="outline"
-          size="sm"
-          onClick={onBackspace}
           className="h-6 text-xs"
+          onClick={onBackspace}
+          size="sm"
+          variant="outline"
         >
           ← Späť
         </Button>
         <Button
+          className="h-6 text-xs"
           onClick={(_e) => {
             try {
               onEnter();
@@ -138,7 +139,6 @@ export function MathKeyboard({
             }
           }}
           size="sm"
-          className="h-6 text-xs"
         >
           Skontrolovať ✓
         </Button>
@@ -150,11 +150,11 @@ export function MathKeyboard({
         <div className="grid grid-cols-4 gap-1">
           {examples.map((example) => (
             <Button
-              key={example.label}
-              variant="ghost"
-              size="sm"
-              onClick={() => onInput(example.value)}
               className="h-5 justify-start font-mono text-xs"
+              key={example.label}
+              onClick={() => onInput(example.value)}
+              size="sm"
+              variant="ghost"
             >
               {example.label}
             </Button>

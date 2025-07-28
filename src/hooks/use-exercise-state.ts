@@ -1,5 +1,5 @@
-import { compareFunctions } from '@/lib/math-utils';
 import { useCallback, useState } from 'react';
+import { compareFunctions } from '@/lib/math-utils';
 
 interface Exercise {
   question: string;

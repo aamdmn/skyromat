@@ -101,7 +101,9 @@ export function FunctionGraph({
   // Handle mouse move for panning
   const handleMouseMove = useCallback(
     (e: React.MouseEvent) => {
-      if (!isDragging || !dragStart || !containerRef.current) return;
+      if (!(isDragging && dragStart && containerRef.current)) {
+        return;
+      }
 
       const rect = containerRef.current.getBoundingClientRect();
       const deltaX = (e.clientX - dragStart.x) / rect.width;
@@ -139,36 +141,36 @@ export function FunctionGraph({
 
   return (
     <motion.div
+      animate={{ opacity: 1 }}
       className="lg:col-span-6"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
       transition={{ delay: 0.4, duration: 0.3 }}
     >
       <Card className="h-full bg-white">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-lg">Graf funkcie</CardTitle>
           <Button
-            variant="outline"
-            size="sm"
-            onClick={handleReset}
             className="h-8 px-3"
+            onClick={handleReset}
+            size="sm"
+            variant="outline"
           >
             Reset
           </Button>
         </CardHeader>
         <CardContent>
           <div
-            ref={containerRef}
             className="select-none"
-            onWheel={handleWheel}
             onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseUp}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
+            onWheel={handleWheel}
+            ref={containerRef}
             style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
           >
             <ChartContainer config={chartConfig}>
-              <ResponsiveContainer width="100%" height={400}>
+              <ResponsiveContainer height={400} width="100%">
                 <LineChart
                   data={chartData}
                   margin={{
@@ -178,77 +180,77 @@ export function FunctionGraph({
                     bottom: 20,
                   }}
                 >
-                  <CartesianGrid strokeDasharray="1 1" stroke="#e5e7eb" />
+                  <CartesianGrid stroke="#e5e7eb" strokeDasharray="1 1" />
 
                   <XAxis
-                    dataKey="x"
-                    type="number"
-                    domain={xRange}
-                    tickLine={true}
                     axisLine={true}
-                    tickMargin={8}
-                    tick={{ fontSize: 12, fill: '#374151' }}
+                    dataKey="x"
+                    domain={xRange}
                     stroke="#6b7280"
+                    tick={{ fontSize: 12, fill: '#374151' }}
                     tickFormatter={(value) => value.toFixed(1)}
+                    tickLine={true}
+                    tickMargin={8}
+                    type="number"
                   />
 
                   <YAxis
-                    type="number"
-                    domain={yRange}
-                    tickLine={true}
                     axisLine={true}
-                    tickMargin={8}
-                    tick={{ fontSize: 12, fill: '#374151' }}
+                    domain={yRange}
                     stroke="#6b7280"
+                    tick={{ fontSize: 12, fill: '#374151' }}
                     tickFormatter={(value) => value.toFixed(1)}
+                    tickLine={true}
+                    tickMargin={8}
+                    type="number"
                   />
 
                   {/* Reference lines for axes through origin */}
                   <ReferenceLine
-                    x={0}
                     stroke="#9ca3af"
-                    strokeWidth={1}
-                    strokeOpacity={0.6}
                     strokeDasharray="2 2"
+                    strokeOpacity={0.6}
+                    strokeWidth={1}
+                    x={0}
                   />
                   <ReferenceLine
-                    y={0}
                     stroke="#9ca3af"
-                    strokeWidth={1}
-                    strokeOpacity={0.6}
                     strokeDasharray="2 2"
+                    strokeOpacity={0.6}
+                    strokeWidth={1}
+                    y={0}
                   />
 
                   <ChartTooltip
-                    cursor={{ stroke: '#94a3b8', strokeWidth: 1 }}
                     content={<ChartTooltipContent hideLabel />}
+                    cursor={{ stroke: '#94a3b8', strokeWidth: 1 }}
                   />
 
                   {/* Target Function Line - prominent blue */}
                   <Line
-                    type="monotone"
-                    dataKey="target"
-                    stroke="#3b82f6"
-                    strokeWidth={2}
-                    dot={false}
-                    connectNulls={false}
                     animationDuration={600}
                     animationEasing="ease-out"
+                    connectNulls={false}
+                    dataKey="target"
+                    dot={false}
+                    stroke="#3b82f6"
+                    strokeWidth={2}
+                    type="monotone"
                   />
 
                   {/* Student Function Line - helper, less prominent */}
                   {studentFunction && (
                     <Line
-                      type="monotone"
-                      dataKey="student"
-                      stroke="#dc2626"
-                      strokeWidth={2}
-                      strokeOpacity={0.8}
-                      strokeDasharray="4 2"
-                      dot={false}
-                      connectNulls={false}
                       animationDuration={650}
                       animationEasing="ease-in-out"
+                      connectNulls={false}
+                      dataKey="student"
+                      dot={false}
+                      stroke="#dc2626"
+                      strokeDasharray="4 2"
+                      strokeOpacity={0.8}
+                      strokeWidth={2}
+                      type="monotone"
                     />
                   )}
                 </LineChart>

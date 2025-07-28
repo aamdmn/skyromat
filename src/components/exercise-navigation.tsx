@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button';
 import { motion } from 'motion/react';
+import { Button } from '@/components/ui/button';
 
 interface ExerciseNavigationProps {
   isCorrect: boolean | null;
@@ -19,7 +19,6 @@ export function ExerciseNavigation({
   if (isLastExercise) {
     return (
       <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
         animate={{
           opacity: 1,
           scale: 1,
@@ -30,10 +29,11 @@ export function ExerciseNavigation({
             stiffness: 300,
           },
         }}
+        initial={{ opacity: 0, scale: 0.8 }}
       >
         <Button
-          onClick={onCompleteLevel}
           className="h-12 w-full bg-gradient-to-r from-amber-500 to-orange-500 font-medium text-sm text-white shadow-lg transition-all duration-200 hover:from-amber-600 hover:to-orange-600 hover:shadow-xl"
+          onClick={onCompleteLevel}
         >
           🎉 Dokončiť level
         </Button>
@@ -43,7 +43,6 @@ export function ExerciseNavigation({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
       animate={{
         opacity: 1,
         y: 0,
@@ -54,10 +53,11 @@ export function ExerciseNavigation({
           stiffness: 300,
         },
       }}
+      initial={{ opacity: 0, y: 10 }}
     >
       <Button
-        onClick={onNextExercise}
         className="h-12 w-full bg-emerald-600 font-medium text-sm shadow-lg transition-all duration-200 hover:bg-emerald-700 hover:shadow-xl"
+        onClick={onNextExercise}
       >
         Ďalšie cvičenie →
       </Button>

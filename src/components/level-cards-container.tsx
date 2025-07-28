@@ -37,15 +37,15 @@ export function LevelCardsContainer({
   return (
     <div className="relative z-10 flex-1 overflow-hidden">
       <div
-        style={headerStyle}
         className="absolute inset-x-0 top-0 z-10 bg-background/80 py-4 text-center transition-all duration-200"
+        style={headerStyle}
       >
         <h1 className="font-medium text-2xl">{themeName}</h1>
         <p className="text-md text-muted-foreground">{themeDescription}</p>
       </div>
       <div
-        ref={onScrollRef}
         className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted-foreground/20 h-full overflow-y-auto px-6"
+        ref={onScrollRef}
       >
         <div className="mx-auto max-w-2xl space-y-8 pt-28 pb-[40vh]">
           {cardItems.map((item, index) => {
@@ -62,13 +62,13 @@ export function LevelCardsContainer({
 
             return (
               <LevelCard
-                key={level.id}
-                level={level}
-                isActive={isActive}
                 index={index}
-                onRef={onCardRef(index)}
+                isActive={isActive}
                 isCompleted={isLevelCompleted(level.id)}
                 isUnlocked={isLevelUnlocked(level.id)}
+                key={level.id}
+                level={level}
+                onRef={onCardRef(index)}
               />
             );
           })}
