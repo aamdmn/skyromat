@@ -12,7 +12,7 @@ import { useProgress } from '@/hooks/use-progress';
 import type { Level, Theme } from '@/lib/levels';
 
 interface ThemePageClientProps {
-  theme: Theme | null;
+  theme: Theme | undefined;
 }
 
 export function ThemePageClient({ theme }: ThemePageClientProps) {
