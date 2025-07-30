@@ -1,4 +1,4 @@
-import { eq } from 'drizzle-orm';
+import { asc, eq } from 'drizzle-orm';
 import { db } from '@/db';
 import { exercises, levels, themes } from '@/db/schema';
 
@@ -38,7 +38,8 @@ export async function getAllThemes(): Promise<Theme[]> {
       const levelsResult = await db
         .select()
         .from(levels)
-        .where(eq(levels.themeId, theme.id));
+        .where(eq(levels.themeId, theme.id))
+        .orderBy(asc(levels.difficulty));
 
       const levelsWithExercises = await Promise.all(
         levelsResult.map(async (level) => {
@@ -137,7 +138,8 @@ export async function getThemeById(
   const levelsResult = await db
     .select()
     .from(levels)
-    .where(eq(levels.themeId, theme.id));
+    .where(eq(levels.themeId, theme.id))
+    .orderBy(asc(levels.difficulty));
 
   const levelsWithExercises = await Promise.all(
     levelsResult.map(async (level) => {

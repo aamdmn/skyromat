@@ -14,11 +14,13 @@ import type { Level } from '@/lib/levels';
 
 interface LevelPageClientProps {
   level: Level;
+  themeLevels: Level[];
 }
 
-export function LevelPageClient({ level }: LevelPageClientProps) {
+export function LevelPageClient({ level, themeLevels }: LevelPageClientProps) {
   const [hasCheckedAnswer, setHasCheckedAnswer] = useState(false);
-  const { completeLevel } = useProgress([]);
+  const { completeLevel, isLoading: isProgressLoading } =
+    useProgress(themeLevels);
 
   const router = useRouter();
 
@@ -39,7 +41,7 @@ export function LevelPageClient({ level }: LevelPageClientProps) {
   } = useExerciseState(level);
 
   const handleCompleteLevel = () => {
-    completeLevel(level.id.toString());
+    completeLevel(level.id);
 
     // Show confetti celebration
     const fireConfetti = () => {
@@ -113,6 +115,17 @@ export function LevelPageClient({ level }: LevelPageClientProps) {
       setHasCheckedAnswer(true);
     }
   };
+
+  if (isProgressLoading) {
+    return (
+      <div className="flex h-screen w-full flex-col items-center justify-center bg-background">
+        <div className="text-center">
+          <div className="mb-4 h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+          <p className="text-lg text-muted-foreground">Loading progress...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <motion.div

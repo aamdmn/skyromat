@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { LevelPageClient } from '@/components/level-page-client';
-import { getLevelById } from '@/lib/levels';
+import { getLevelById, getThemeById } from '@/lib/levels';
 
 export default async function LevelPage({
   params,
@@ -14,5 +14,9 @@ export default async function LevelPage({
     return notFound();
   }
 
-  return <LevelPageClient level={level} />;
+  // Get all levels for the theme to enable proper progress tracking
+  const theme = await getThemeById(level.themeId);
+  const themeLevels = theme?.levels ?? [];
+
+  return <LevelPageClient level={level} themeLevels={themeLevels} />;
 }

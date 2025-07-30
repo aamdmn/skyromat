@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 interface LevelCardProps {
   level: {
-    id: string;
+    id: number;
     name: string;
     description?: string;
   };

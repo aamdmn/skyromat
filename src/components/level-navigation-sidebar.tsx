@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 
 interface LevelItem {
-  id: string;
+  id: number;
   name: string;
   type: 'level';
 }
@@ -13,9 +13,9 @@ interface LevelNavigationSidebarProps {
   levelItems: LevelItem[];
   activeIndex: number;
   onLevelClick: (index: number) => void;
-  cardItems: Array<{ id: string; type: 'level' | 'divider' }>;
-  isLevelCompleted: (levelId: string) => boolean;
-  isLevelUnlocked: (levelId: string) => boolean;
+  cardItems: Array<{ id: number; type: 'level' | 'divider' }>;
+  isLevelCompleted: (levelId: number) => boolean;
+  isLevelUnlocked: (levelId: number) => boolean;
 }
 
 export function LevelNavigationSidebar({

@@ -3,7 +3,7 @@ import { LevelCard } from './level-card';
 import { LevelDivider } from './level-divider';
 
 interface CardItem {
-  id: string;
+  id: number;
   type: 'level' | 'divider';
   name: string;
   description?: string;
@@ -18,8 +18,8 @@ interface LevelCardsContainerProps {
   themeName: string;
   themeDescription: string;
   onCardRef: (index: number) => (el: HTMLDivElement | null) => void;
-  isLevelCompleted: (levelId: string) => boolean;
-  isLevelUnlocked: (levelId: string) => boolean;
+  isLevelCompleted: (levelId: number) => boolean;
+  isLevelUnlocked: (levelId: number) => boolean;
   headerStyle: React.CSSProperties;
 }
 

@@ -18,7 +18,7 @@ interface ThemePageClientProps {
 export function ThemePageClient({ theme }: ThemePageClientProps) {
   const levels = React.useMemo(() => theme?.levels ?? [], [theme]);
 
-  const { isLevelCompleted, isLevelUnlocked } = useProgress(levels);
+  const { isLevelCompleted, isLevelUnlocked, isLoading } = useProgress(levels);
 
   const cardItems = React.useMemo(() => {
     if (!theme) {
@@ -78,6 +78,17 @@ export function ThemePageClient({ theme }: ThemePageClientProps) {
           <ArrowLeft className="mr-2 h-4 w-4" />
           Späť na hlavnú stránku
         </Link>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex h-screen w-full flex-col items-center justify-center bg-background">
+        <div className="text-center">
+          <div className="mb-4 h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+          <p className="text-lg text-muted-foreground">Loading progress...</p>
+        </div>
       </div>
     );
   }

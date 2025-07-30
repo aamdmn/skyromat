@@ -57,3 +57,19 @@ export const exercises = pgTable('exercises', {
     .$defaultFn(() => new Date())
     .notNull(),
 });
+
+export const userProgress = pgTable('user_progress', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id')
+    .notNull()
+    .references(() => user.id, { onDelete: 'cascade' }),
+  levelId: integer('level_id')
+    .notNull()
+    .references(() => levels.id, { onDelete: 'cascade' }),
+  completedAt: timestamp('completed_at')
+    .$defaultFn(() => new Date())
+    .notNull(),
+  createdAt: timestamp('created_at')
+    .$defaultFn(() => new Date())
+    .notNull(),
+});
