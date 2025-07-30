@@ -39,7 +39,7 @@ export function LevelPageClient({ level }: LevelPageClientProps) {
   } = useExerciseState(level);
 
   const handleCompleteLevel = () => {
-    completeLevel(level.id);
+    completeLevel(level.id.toString());
 
     // Show confetti celebration
     const fireConfetti = () => {

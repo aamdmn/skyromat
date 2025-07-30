@@ -8,7 +8,7 @@ export default async function LevelPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const level = getLevelById(id);
+  const level = await getLevelById(Number.parseInt(id, 10));
 
   if (!level) {
     return notFound();

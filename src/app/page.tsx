@@ -14,7 +14,7 @@ export default async function Home() {
     return redirect('/login');
   }
 
-  const themes = getAllThemes();
+  const themes = await getAllThemes();
   return (
     <>
       <Header />

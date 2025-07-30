@@ -1,15 +1,6 @@
 import { useCallback, useState } from 'react';
+import type { Level } from '@/lib/levels';
 import { compareFunctions } from '@/lib/math-utils';
-
-interface Exercise {
-  question?: string;
-  correctAnswer: string;
-  explanation?: string;
-}
-
-interface Level {
-  exercises: Exercise[];
-}
 
 export function useExerciseState(level: Level) {
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
@@ -30,9 +21,9 @@ export function useExerciseState(level: Level) {
       studentFunction
     );
     setIsCorrect(correct);
-    
+
     if (!correct) {
-      setAttempts(prev => prev + 1);
+      setAttempts((prev) => prev + 1);
     }
   }, [studentFunction, currentExercise.correctAnswer]);
 

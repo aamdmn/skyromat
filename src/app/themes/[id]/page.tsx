@@ -7,7 +7,7 @@ export default async function ThemePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const theme = getThemeById(id);
+  const theme = await getThemeById(Number.parseInt(id, 10));
 
   return <ThemePageClient theme={theme} />;
 }

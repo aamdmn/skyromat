@@ -1,11 +1,6 @@
 import { motion } from 'motion/react';
 import Link from 'next/link';
-
-interface Level {
-  name: string;
-  description: string;
-  themeId: string;
-}
+import type { Level } from '@/lib/levels';
 
 interface LevelHeaderProps {
   level: Level;

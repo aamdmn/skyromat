@@ -6,14 +6,10 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import type { Exercise } from '@/lib/levels';
 import { getSuggestions, validateExpression } from '@/lib/math-utils';
 import { ExerciseNavigation } from './exercise-navigation';
 import { ExerciseResult } from './exercise-result';
-
-interface Exercise {
-  question?: string;
-  explanation?: string;
-}
 
 interface FunctionInputProps {
   exercise: Exercise;
@@ -201,7 +197,7 @@ export function FunctionInput({
           </div>
 
           <ExerciseResult
-            explanation={exercise.explanation}
+            explanation={exercise.explanation || ''}
             isCorrect={isCorrect}
             shouldShowExplanation={shouldShowExplanation}
           />
