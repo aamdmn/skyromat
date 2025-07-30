@@ -2,6 +2,7 @@ import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import { AdminContentEditor } from '@/components/admin-content-editor';
+import Header from '@/components/header';
 import Loader from '@/components/loader';
 import {
   getExercisesForAdmin,
@@ -27,7 +28,8 @@ export default async function AdminPage() {
   ]);
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto">
+      <Header />
       <h1 className="mb-8 font-bold text-3xl">Content Management</h1>
       <Suspense fallback={<Loader />}>
         <AdminContentEditor

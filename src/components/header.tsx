@@ -1,5 +1,6 @@
 'use client';
-import { ChevronDown, Loader2, LogOut, User } from 'lucide-react';
+import { ChevronDown, Edit2, Loader2, LogOut, User } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -34,7 +35,9 @@ export default function Header() {
       <div className="container mx-auto flex h-14 items-center justify-between bg-transparent px-4">
         {/* Logo */}
         <div className="flex items-center">
-          <h1 className="font-medium text-primary text-xl">SkyroMat</h1>
+          <Link href="/">
+            <h1 className="font-medium text-primary text-xl">SkyroMat</h1>
+          </Link>
         </div>
 
         {/* User Menu */}
@@ -47,11 +50,11 @@ export default function Header() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
-            {/* <DropdownMenuItem>
-              <Settings className="mr-2 h-4 w-4" />
+            <DropdownMenuItem onClick={() => router.push('/admin')}>
+              <Edit2 className="mr-2 h-4 w-4" />
               Settings
-            </DropdownMenuItem> */}
-            {/* <DropdownMenuSeparator /> */}
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
             <DropdownMenuItem
               disabled={loading}
               onClick={() => {
