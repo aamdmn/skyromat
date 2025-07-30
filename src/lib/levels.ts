@@ -3,10 +3,10 @@ import levelsData from '../data/levels.json' with { type: 'json' };
 export interface Exercise {
   id: string;
   type: string;
-  question: string;
+  question?: string;
   options: string[];
   correctAnswer: string;
-  explanation: string;
+  explanation?: string;
 }
 
 export interface Level {

@@ -1,16 +1,41 @@
-import { CheckCircle, XCircle } from 'lucide-react';
+import { CheckCircle, XCircle, Lightbulb } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface ExerciseResultProps {
   isCorrect: boolean | null;
   explanation?: string;
+  shouldShowExplanation?: boolean;
 }
 
 export function ExerciseResult({
   isCorrect,
   explanation,
+  shouldShowExplanation = false,
 }: ExerciseResultProps) {
   if (isCorrect === null) {
+    // Show help section if help was requested but no answer checked yet
+    if (shouldShowExplanation && explanation) {
+      return (
+        <motion.div
+          animate={{ opacity: 1, y: 0 }}
+          className="rounded-xl border border-blue-200/50 bg-gradient-to-r from-blue-50 to-indigo-50 p-4 backdrop-blur-sm"
+          initial={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="flex items-start gap-3">
+            <Lightbulb className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-500" />
+            <div className="min-w-0 flex-1">
+              <p className="mb-2 font-medium text-blue-900 text-sm">
+                Nápoveda
+              </p>
+              <p className="text-blue-700 text-xs leading-relaxed">
+                {explanation}
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      );
+    }
     return null;
   }
 
@@ -113,7 +138,7 @@ export function ExerciseResult({
           >
             Skúste znova
           </motion.p>
-          {explanation && (
+          {shouldShowExplanation && explanation && (
             <motion.p
               animate={{
                 opacity: 1,

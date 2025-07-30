@@ -28,9 +28,12 @@ export function LevelPageClient({ level }: LevelPageClientProps) {
     studentFunction,
     setStudentFunction,
     isCorrect,
+    attempts,
+    shouldShowExplanation,
     handleCheckAnswer,
     handleNextExercise,
     handleReset,
+    handleShowHelp,
     isLastExercise,
     totalExercises,
   } = useExerciseState(level);
@@ -132,6 +135,7 @@ export function LevelPageClient({ level }: LevelPageClientProps) {
         />
 
         <FunctionInput
+          attempts={attempts}
           exercise={currentExercise}
           isCorrect={isCorrect}
           isLastExercise={isLastExercise}
@@ -140,7 +144,9 @@ export function LevelPageClient({ level }: LevelPageClientProps) {
           onEnterPress={handleMathEnter}
           onNextExercise={handleNextExercise}
           onReset={handleReset}
+          onShowHelp={handleShowHelp}
           setStudentFunction={setStudentFunction}
+          shouldShowExplanation={shouldShowExplanation}
           studentFunction={studentFunction}
         />
 

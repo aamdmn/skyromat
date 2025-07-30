@@ -1,4 +1,4 @@
-import { RotateCcw } from 'lucide-react';
+import { Lightbulb, RotateCcw } from 'lucide-react';
 import { motion } from 'motion/react';
 import type React from 'react';
 import { useEffect, useState } from 'react';
@@ -11,8 +11,8 @@ import { ExerciseNavigation } from './exercise-navigation';
 import { ExerciseResult } from './exercise-result';
 
 interface Exercise {
-  question: string;
-  explanation: string;
+  question?: string;
+  explanation?: string;
 }
 
 interface FunctionInputProps {
@@ -20,8 +20,11 @@ interface FunctionInputProps {
   studentFunction: string;
   setStudentFunction: (value: string) => void;
   isCorrect: boolean | null;
+  attempts: number;
+  shouldShowExplanation: boolean;
   onCheckAnswer: () => void;
   onReset: () => void;
+  onShowHelp: () => void;
   onNextExercise: () => void;
   onCompleteLevel: () => void;
   onEnterPress: () => void;
@@ -33,8 +36,11 @@ export function FunctionInput({
   studentFunction,
   setStudentFunction,
   isCorrect,
+  attempts,
+  shouldShowExplanation,
   onCheckAnswer,
   onReset,
+  onShowHelp,
   onNextExercise,
   onCompleteLevel,
   onEnterPress,
@@ -83,10 +89,22 @@ export function FunctionInput({
         <h3 className="mb-3 font-semibold text-lg">Vaša funkcia</h3>
 
         <div className="mb-4">
-          <p className="mb-3 text-sm">{exercise.question}</p>
+          {exercise.question && (
+            <p className="mb-3 text-sm">{exercise.question}</p>
+          )}
           <div className="mb-3 text-muted-foreground text-xs">
             Napíšte funkciu, ktorá bude mať rovnaký graf ako modrá čiara.
           </div>
+          {attempts > 0 && (
+            <div className="mb-2 text-muted-foreground text-xs">
+              Pokusov: {attempts}
+              {attempts >= 5 && exercise.explanation && (
+                <span className="ml-2 text-amber-600">
+                  (Vysvetlenie je dostupné)
+                </span>
+              )}
+            </div>
+          )}
         </div>
 
         <div className="space-y-3">
@@ -130,10 +148,10 @@ export function FunctionInput({
                       Možno ste mysleli:
                     </p>
                     <div className="flex flex-wrap gap-1">
-                      {suggestions.slice(0, 3).map((suggestion, index) => (
+                      {suggestions.slice(0, 3).map((suggestion) => (
                         <button
                           className="rounded bg-blue-100 px-2 py-1 font-mono text-blue-800 text-xs transition-colors hover:bg-blue-200"
-                          key={index}
+                          key={suggestion}
                           onClick={() => applySuggestion(suggestion)}
                           type="button"
                         >
@@ -165,11 +183,27 @@ export function FunctionInput({
               <RotateCcw className="mr-1 h-3 w-3" />
               Reset
             </Button>
+            <Button
+              className="h-7 text-xs"
+              disabled={!exercise.explanation}
+              onClick={onShowHelp}
+              size="sm"
+              title={
+                exercise.explanation
+                  ? 'Zobraziť nápovedu'
+                  : 'Nápoveda nie je dostupná'
+              }
+              variant="outline"
+            >
+              <Lightbulb className="mr-1 h-3 w-3" />
+              Nápoveda
+            </Button>
           </div>
 
           <ExerciseResult
             explanation={exercise.explanation}
             isCorrect={isCorrect}
+            shouldShowExplanation={shouldShowExplanation}
           />
 
           <ExerciseNavigation

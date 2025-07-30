@@ -2,9 +2,9 @@ import { useCallback, useState } from 'react';
 import { compareFunctions } from '@/lib/math-utils';
 
 interface Exercise {
-  question: string;
+  question?: string;
   correctAnswer: string;
-  explanation: string;
+  explanation?: string;
 }
 
 interface Level {
@@ -15,6 +15,8 @@ export function useExerciseState(level: Level) {
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [studentFunction, setStudentFunction] = useState('');
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [attempts, setAttempts] = useState(0);
+  const [showHelp, setShowHelp] = useState(false);
 
   const currentExercise = level.exercises[currentExerciseIndex];
 
@@ -28,6 +30,10 @@ export function useExerciseState(level: Level) {
       studentFunction
     );
     setIsCorrect(correct);
+    
+    if (!correct) {
+      setAttempts(prev => prev + 1);
+    }
   }, [studentFunction, currentExercise.correctAnswer]);
 
   const handleNextExercise = useCallback(() => {
@@ -35,6 +41,8 @@ export function useExerciseState(level: Level) {
       setCurrentExerciseIndex((prev) => prev + 1);
       setStudentFunction('');
       setIsCorrect(null);
+      setAttempts(0);
+      setShowHelp(false);
     }
   }, [currentExerciseIndex, level.exercises.length]);
 
@@ -43,7 +51,12 @@ export function useExerciseState(level: Level) {
     setIsCorrect(null);
   }, []);
 
+  const handleShowHelp = useCallback(() => {
+    setShowHelp(true);
+  }, []);
+
   const isLastExercise = currentExerciseIndex === level.exercises.length - 1;
+  const shouldShowExplanation = showHelp || attempts >= 5;
 
   return {
     currentExercise,
@@ -51,9 +64,13 @@ export function useExerciseState(level: Level) {
     studentFunction,
     setStudentFunction,
     isCorrect,
+    attempts,
+    showHelp,
+    shouldShowExplanation,
     handleCheckAnswer,
     handleNextExercise,
     handleReset,
+    handleShowHelp,
     isLastExercise,
     totalExercises: level.exercises.length,
   };
