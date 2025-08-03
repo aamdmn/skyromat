@@ -168,7 +168,7 @@ function ThemesTab({ themes }: { themes: Theme[] }) {
   const handleDelete = async (id: number, name: string) => {
     if (
       !confirm(
-        `Are you sure you want to delete theme "${name}"? This will also delete all levels and exercises in this theme.`
+        `Naozaj chcete zmazať tému "${name}"? Týmto sa zmažú všetky úrovne a cvičenia v tejto téme.`
       )
     ) {
       return;
@@ -200,7 +200,7 @@ function ThemesTab({ themes }: { themes: Theme[] }) {
                 size="sm"
                 variant="destructive"
               >
-                Delete
+                Zmazať
               </Button>
             </div>
           </CardContent>
@@ -210,7 +210,7 @@ function ThemesTab({ themes }: { themes: Theme[] }) {
         <Card className="col-span-full">
           <CardContent className="flex h-32 items-center justify-center">
             <p className="text-muted-foreground">
-              No themes found. Create your first theme!
+              Žiadne témy. Vytvorte svoju prvú tému!
             </p>
           </CardContent>
         </Card>
@@ -265,7 +265,7 @@ function LevelsTab({
                 size="sm"
                 variant="destructive"
               >
-                Delete
+                Zmazať
               </Button>
             </div>
           </CardContent>
@@ -275,7 +275,7 @@ function LevelsTab({
         <Card className="col-span-full">
           <CardContent className="flex h-32 items-center justify-center">
             <p className="text-muted-foreground">
-              No levels found. Create your first level!
+              Žiadne úrovne. Vytvorte svoju prvú úroveň!
             </p>
           </CardContent>
         </Card>
@@ -328,7 +328,7 @@ function ExercisesTab({
                 size="sm"
                 variant="destructive"
               >
-                Delete
+                Zmazať
               </Button>
             </div>
           </CardContent>
@@ -338,7 +338,7 @@ function ExercisesTab({
         <Card className="col-span-full">
           <CardContent className="flex h-32 items-center justify-center">
             <p className="text-muted-foreground">
-              No exercises found. Create your first exercise!
+              Žiadne cvičenia. Vytvorte svoje prvé cvičenie!
             </p>
           </CardContent>
         </Card>
@@ -366,14 +366,14 @@ function CreateThemeForm({ onClose }: { onClose: () => void }) {
   return (
     <form action={formAction} className="space-y-4">
       <div>
-        <Label htmlFor="theme-name">Name</Label>
+        <Label htmlFor="theme-name">Názov</Label>
         <Input id="theme-name" name="name" required />
         {state.errors?.name && (
           <p className="mt-1 text-red-500 text-sm">{state.errors.name[0]}</p>
         )}
       </div>
       <div>
-        <Label htmlFor="theme-description">Description</Label>
+        <Label htmlFor="theme-description">Popis</Label>
         <Input id="theme-description" name="description" />
         {state.errors?.description && (
           <p className="mt-1 text-red-500 text-sm">
@@ -383,10 +383,10 @@ function CreateThemeForm({ onClose }: { onClose: () => void }) {
       </div>
       <div className="flex justify-end space-x-2">
         <Button onClick={onClose} type="button" variant="outline">
-          Cancel
+          Zrušiť
         </Button>
         <Button disabled={pending} type="submit">
-          {pending ? 'Creating...' : 'Create Theme'}
+          {pending ? 'Vytváranie...' : 'Vytvoriť'}
         </Button>
       </div>
     </form>
@@ -418,14 +418,14 @@ function CreateLevelForm({
   return (
     <form action={formAction} className="space-y-4">
       <div>
-        <Label htmlFor="level-name">Name</Label>
+        <Label htmlFor="level-name">Názov</Label>
         <Input id="level-name" name="name" required />
         {state.errors?.name && (
           <p className="mt-1 text-red-500 text-sm">{state.errors.name[0]}</p>
         )}
       </div>
       <div>
-        <Label htmlFor="level-description">Description</Label>
+        <Label htmlFor="level-description">Popis</Label>
         <Input id="level-description" name="description" />
         {state.errors?.description && (
           <p className="mt-1 text-red-500 text-sm">
@@ -434,7 +434,7 @@ function CreateLevelForm({
         )}
       </div>
       <div>
-        <Label htmlFor="level-difficulty">Difficulty</Label>
+        <Label htmlFor="level-difficulty">Složitosť</Label>
         <Input
           defaultValue="1"
           id="level-difficulty"
@@ -457,7 +457,7 @@ function CreateLevelForm({
           name="themeId"
           required
         >
-          <option value="">Select a theme</option>
+          <option value="">Vyberte tému</option>
           {themes.map((theme) => (
             <option key={theme.id} value={theme.id}>
               {theme.name}
@@ -470,10 +470,10 @@ function CreateLevelForm({
       </div>
       <div className="flex justify-end space-x-2">
         <Button onClick={onClose} type="button" variant="outline">
-          Cancel
+          Zrušiť
         </Button>
         <Button disabled={pending} type="submit">
-          {pending ? 'Creating...' : 'Create Level'}
+          {pending ? 'Vytváranie...' : 'Vytvoriť'}
         </Button>
       </div>
     </form>
@@ -505,11 +505,11 @@ function CreateExerciseForm({
   return (
     <form action={formAction} className="space-y-4">
       <div>
-        <Label htmlFor="exercise-type">Type</Label>
+        <Label htmlFor="exercise-type">Typ</Label>
         <Input
           id="exercise-type"
           name="type"
-          placeholder="e.g., Multiple Choice, Function Input"
+          placeholder="e.g., Výber, Funkcia"
           required
         />
         {state.errors?.type && (
@@ -517,11 +517,11 @@ function CreateExerciseForm({
         )}
       </div>
       <div>
-        <Label htmlFor="exercise-question">Question</Label>
+        <Label htmlFor="exercise-question">Otázka</Label>
         <Input
           id="exercise-question"
           name="question"
-          placeholder="Enter the exercise question"
+          placeholder="Napíšte otázku"
         />
         {state.errors?.question && (
           <p className="mt-1 text-red-500 text-sm">
@@ -529,7 +529,7 @@ function CreateExerciseForm({
           </p>
         )}
       </div>
-      <div>
+      {/* <div>
         <Label htmlFor="exercise-options">
           Options (comma-separated, optional)
         </Label>
@@ -541,9 +541,9 @@ function CreateExerciseForm({
         {state.errors?.options && (
           <p className="mt-1 text-red-500 text-sm">{state.errors.options[0]}</p>
         )}
-      </div>
+      </div> */}
       <div>
-        <Label htmlFor="exercise-answer">Correct Answer</Label>
+        <Label htmlFor="exercise-answer">Správna odpoveď</Label>
         <Input id="exercise-answer" name="correctAnswer" required />
         {state.errors?.correctAnswer && (
           <p className="mt-1 text-red-500 text-sm">
@@ -552,11 +552,11 @@ function CreateExerciseForm({
         )}
       </div>
       <div>
-        <Label htmlFor="exercise-explanation">Explanation</Label>
+        <Label htmlFor="exercise-explanation">Napoveda</Label>
         <Input
           id="exercise-explanation"
           name="explanation"
-          placeholder="Explain why this is the correct answer"
+          placeholder="Napíšte napovedu"
         />
         {state.errors?.explanation && (
           <p className="mt-1 text-red-500 text-sm">
@@ -565,17 +565,17 @@ function CreateExerciseForm({
         )}
       </div>
       <div>
-        <Label htmlFor="exercise-level">Level</Label>
+        <Label htmlFor="exercise-level">Úroveň</Label>
         <select
           className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:font-medium file:text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           id="exercise-level"
           name="levelId"
           required
         >
-          <option value="">Select a level</option>
+          <option value="">Vyberte úroveň</option>
           {levels.map((level) => (
             <option key={level.id} value={level.id}>
-              {level.name} (Theme: {level.themeName || 'Unknown'})
+              {level.name} (Téma: {level.themeName || 'Neznáma'})
             </option>
           ))}
         </select>
@@ -585,10 +585,10 @@ function CreateExerciseForm({
       </div>
       <div className="flex justify-end space-x-2">
         <Button onClick={onClose} type="button" variant="outline">
-          Cancel
+          Zrušiť
         </Button>
         <Button disabled={pending} type="submit">
-          {pending ? 'Creating...' : 'Create Exercise'}
+          {pending ? 'Vytváranie...' : 'Vytvoriť'}
         </Button>
       </div>
     </form>
@@ -599,7 +599,7 @@ function CreateExerciseForm({
 function EditThemeButton() {
   return (
     <Button size="sm" variant="outline">
-      Edit
+      Upraviť
     </Button>
   );
 }
@@ -607,7 +607,7 @@ function EditThemeButton() {
 function EditLevelButton() {
   return (
     <Button size="sm" variant="outline">
-      Edit
+      Upraviť
     </Button>
   );
 }
@@ -615,7 +615,7 @@ function EditLevelButton() {
 function EditExerciseButton() {
   return (
     <Button size="sm" variant="outline">
-      Edit
+      Upraviť
     </Button>
   );
 }

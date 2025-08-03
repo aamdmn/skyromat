@@ -35,9 +35,9 @@ export function LevelCardsContainer({
   headerStyle,
 }: LevelCardsContainerProps) {
   return (
-    <div className="relative z-10 flex-1 overflow-hidden">
+    <div className="relative z-10 flex-1 ">
       <div
-        className="absolute inset-x-0 top-0 z-10 bg-background/80 py-4 text-center transition-all duration-200"
+        className="absolute inset-x-0 top-0 z-10 bg-background/70 py-4 text-center backdrop-blur-sm transition-all duration-200"
         style={headerStyle}
       >
         <h1 className="font-medium text-2xl">{themeName}</h1>

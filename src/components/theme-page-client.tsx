@@ -103,7 +103,7 @@ export function ThemePageClient({ theme }: ThemePageClientProps) {
         transition={{ duration: 0.3 }}
       >
         <div
-          className="absolute inset-x-0 top-0 z-20 flex items-center justify-between bg-transparent px-8 py-4 transition-all duration-200"
+          className="absolute inset-x-0 top-0 flex items-center justify-between bg-transparent px-8 py-4 transition-all duration-200"
           style={headerStyle}
         >
           <Link

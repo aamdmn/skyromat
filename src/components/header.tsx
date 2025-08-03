@@ -52,7 +52,7 @@ export default function Header() {
           <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuItem onClick={() => router.push('/admin')}>
               <Edit2 className="mr-2 h-4 w-4" />
-              Settings
+              Admin
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
